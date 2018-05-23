@@ -21,9 +21,9 @@ namespace Motion {
             Vector2 velocityBallPink = new Vector2(150, -80.72f);
             Vector2 velocityBallPurple = new Vector2(0, 10);
             // step 1: Initialize three balls on the correct position
-            var ballRed = new RedBall("spr_ball_red", positionBallRed, velocityBallRed, 30f);
-            var ballPink = new PinkBall("PinkSoftColorBall", positionBallPink, velocityBallPink, 30f);
-            var ballPurple = new PurpleBall("PurpleSoftColorBall", positionBallPurple, velocityBallPurple, 30f);
+            var ballRed = new Ball("spr_ball_red", positionBallRed, velocityBallRed, 30f);
+            var ballPink = new Ball("PinkSoftColorBall", positionBallPink, velocityBallPink, 30f);
+            var ballPurple = new Ball("PurpleSoftColorBall", positionBallPurple, velocityBallPurple, 30f);
             Add(ballRed);
             Add(ballPink);
             Add(ballPurple);

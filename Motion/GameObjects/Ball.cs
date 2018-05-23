@@ -5,9 +5,7 @@ namespace Motion {
     class Ball : SpriteGameObject {
         protected float radius;
         protected Vector2 acceleration;
-        // step 4: Declare variable for the acceleration
-        // step 6: Declare variable for the gravity
-        // step 8: Declare variable for inelastic behaviour
+        private int nFrame = 0;
 
         public Ball(string assetName, Vector2 position, Vector2 velocity, float radius)
             : base(assetName, 0, "ball") {
@@ -20,11 +18,47 @@ namespace Motion {
         }
 
         public override void Update(GameTime gameTime) {
-            // step 3: Implement Ball bouncing behaviour
-            // step 5: Implement acceleration behaviour
-            // step 7: Implement gravity behaviour
-            // step 9: Implement inelastic behaviour
-
+            switch (assetName)
+	        {
+            case "spr_ball_red":
+                if (nFrame % 60 == 0)
+                {
+                Velocity += acceleration;
+                }
+                if (position.X + radius >= Motion.Screen.X)
+                {
+                position.X = Motion.Screen.X;
+                velocity.X = -velocity.X;
+                acceleration.X = -acceleration.X;
+                }
+           
+                if (position.X - radius <= 0)
+                {
+                position.X = 0;
+                velocity.X = -velocity.X;
+                acceleration.X = -acceleration.X;
+                }
+                break;
+            case "PurpleSoftColorBall":
+                if (nFrame % 60 == 0 && velocity.Y != 0 || position.Y < Motion.Screen.Y - 30 )
+                {
+                velocity += acceleration;
+                }
+                if (position.Y + radius >= Motion.Screen.Y)
+                {
+                position.Y = Motion.Screen.Y;
+                velocity.Y -= 20;
+                velocity.Y = -velocity.Y;
+                }
+                nFrame++;
+                break;
+            case "PinkSoftColorBall":
+                    //niet gelukt
+                break;
+		        default:
+                break;
+	        }
+                                
             base.Update(gameTime);
         }
     }
